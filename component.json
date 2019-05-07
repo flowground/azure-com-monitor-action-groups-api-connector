@@ -1,0 +1,168 @@
+{
+    "title": "Azure Action Groups",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/monitor-actionGroups_API/2018-09-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "ActionGroups_ListBySubscriptionId": {
+            "main": "./lib/actions/ActionGroups_ListBySubscriptionId.js",
+            "title": "Get a list of all action groups in a subscription.",
+            "description": "Get a list of all action groups in a subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ActionGroups_ListBySubscriptionId.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ActionGroups_ListByResourceGroup": {
+            "main": "./lib/actions/ActionGroups_ListByResourceGroup.js",
+            "title": "Get a list of all action groups in a resource group.",
+            "description": "Get a list of all action groups in a resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ActionGroups_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ActionGroups_Delete": {
+            "main": "./lib/actions/ActionGroups_Delete.js",
+            "title": "Delete an action group.",
+            "description": "Delete an action group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ActionGroups_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ActionGroups_Get": {
+            "main": "./lib/actions/ActionGroups_Get.js",
+            "title": "Get an action group.",
+            "description": "Get an action group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ActionGroups_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ActionGroups_Update": {
+            "main": "./lib/actions/ActionGroups_Update.js",
+            "title": "Updates an existing action group's tags. To update other fields use the CreateOrUpdate method.",
+            "description": "Updates an existing action group's tags. To update other fields use the CreateOrUpdate method.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ActionGroups_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ActionGroups_CreateOrUpdate": {
+            "main": "./lib/actions/ActionGroups_CreateOrUpdate.js",
+            "title": "Create a new action group or update an existing one.",
+            "description": "Create a new action group or update an existing one.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ActionGroups_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ActionGroups_EnableReceiver": {
+            "main": "./lib/actions/ActionGroups_EnableReceiver.js",
+            "title": "Enable a receiver in an action group. This changes the receiver's status from Disabled to Enabled. This operation is only supported for Email or SMS receivers.",
+            "description": "Enable a receiver in an action group. This changes the receiver's status from Disabled to Enabled. This operation is only supported for Email or SMS receivers.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ActionGroups_EnableReceiver.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
